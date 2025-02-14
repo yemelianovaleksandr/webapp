@@ -1,0 +1,14 @@
+import threading
+theVar = 1
+class MyThread(threading.Thread):
+    def run ( self ):
+        global theVar
+def listener(messages):
+    @bot.message_handler(commands=['script1'])
+    def handle_script1_request(message):
+        ip = message.text.split()[-1]
+            result = ssh.get_script1(ip)
+            bot.send_message(message.chat.id, result)
+        theVar = theVar + 1
+for x in xrange ( 20 ):
+    MyThread().start()
